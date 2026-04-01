@@ -7,6 +7,7 @@ const HomePage = () => {
   const companyName = "S Tech";
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   const bgImages = [
     "https://images.unsplash.com/photo-1677442136019-21780ecad995",
@@ -14,35 +15,18 @@ const HomePage = () => {
     "https://images.unsplash.com/photo-1550751827-4bd374c3f58b"
   ];
 
-  // 🔁 AUTO SLIDE
+  // 🔁 Background Slider
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % bgImages.length);
-    }, 3000);
-
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  const testimonials = [
-    {
-      name: "Rani Aghav",
-      role: "Frontend Engineer",
-      quote: "Amazing work culture and innovation.",
-      rating: 5
-    },
-    {
-      name: "Suhani Yadav",
-      role: "Product Manager",
-      quote: "Supportive and growth-oriented team.",
-      rating: 5
-    },
-    {
-      name: "Tejashree Torave",
-      role: "Backend Developer",
-      quote: "Great code quality and learning.",
-      rating: 5
-    }
-  ];
+  // 👁 Scroll animation trigger
+  useEffect(() => {
+    setVisible(true);
+  }, []);
 
   const domains = [
     { title: "Web Development", img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085" },
@@ -53,18 +37,22 @@ const HomePage = () => {
     { title: "Full Stack", img: "https://images.unsplash.com/photo-1537432376769-00a2c5f8d1c6" }
   ];
 
+  const testimonials = [
+    { name: "Rani Aghav", role: "Frontend Engineer", quote: "Amazing culture.", rating: 5 },
+    { name: "Suhani Yadav", role: "Product Manager", quote: "Growth oriented team.", rating: 5 },
+    { name: "Tejashree Torave", role: "Backend Dev", quote: "Best learning place.", rating: 5 }
+  ];
+
   return (
     <div className="min-h-screen bg-[#fdf6f0] text-gray-800">
 
       {/* 🔥 HERO SLIDER */}
-      <section className="relative min-h-screen flex items-center justify-center text-center text-white">
+      <section className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
 
-        {/* Background Slider */}
-        {bgImages.map((img, index) => (
-          <div
-            key={index}
+        {bgImages.map((img, i) => (
+          <div key={i}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              currentSlide === index ? "opacity-100" : "opacity-0"
+              currentSlide === i ? "opacity-100" : "opacity-0"
             }`}
             style={{
               backgroundImage: `url(${img})`,
@@ -74,46 +62,46 @@ const HomePage = () => {
           />
         ))}
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
-        {/* Content */}
-        <div className="relative z-10 px-6">
+        <div className={`relative z-10 px-6 transition-all duration-1000 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Shape the Future at{" "}
-            <span className="text-[#f5d0a9]">{companyName}</span>
+            <span className="bg-gradient-to-r from-[#f5d0a9] to-[#e6b98c] bg-clip-text text-transparent animate-pulse">
+              {companyName}
+            </span>
           </h1>
 
           <p className="text-lg max-w-2xl mx-auto mb-10">
-            Build intelligent AI-driven solutions with modern technologies.
+            AI-driven innovation meets modern engineering excellence.
           </p>
 
           <div className="flex justify-center gap-4">
             <Link to="/positions"
-              className="px-6 py-3 bg-[#e6b98c] text-black rounded-lg hover:scale-105 transition">
+              className="px-6 py-3 bg-[#e6b98c] text-black rounded-xl shadow-lg hover:scale-110 transition">
               Explore Jobs
             </Link>
 
             <Link to="/apply"
-              className="px-6 py-3 border border-white rounded-lg hover:bg-white hover:text-black transition">
+              className="px-6 py-3 border border-white rounded-xl hover:bg-white hover:text-black transition">
               Apply Now
             </Link>
           </div>
-
         </div>
       </section>
 
-      {/* 🤖 INFO SECTION */}
+      {/* 🤖 INFO */}
       <section className="py-20 text-center">
         <h2 className="text-3xl font-bold mb-6">AI Powered Innovation</h2>
         <p className="max-w-3xl mx-auto text-gray-600">
-          We create smart, scalable solutions using Artificial Intelligence,
-          Machine Learning and Data Science.
+          We deliver intelligent, scalable and future-ready solutions.
         </p>
       </section>
 
-      {/* 💡 DOMAINS */}
+      {/* 💡 DOMAINS (GLASS UI) */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
 
@@ -124,7 +112,8 @@ const HomePage = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {domains.map((d, i) => (
               <div key={i}
-                className="bg-[#fffaf5] rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition">
+                className="backdrop-blur-lg bg-white/40 border border-white/30 rounded-2xl overflow-hidden 
+                shadow-lg hover:shadow-2xl hover:-translate-y-3 hover:scale-105 transition duration-500">
 
                 <img src={d.img} className="h-40 w-full object-cover" />
 
@@ -146,7 +135,7 @@ const HomePage = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
           {testimonials.map((t, i) => (
             <div key={i}
-              className="bg-[#fffaf5] p-6 rounded-xl shadow hover:shadow-lg transition">
+              className="backdrop-blur-lg bg-white/40 border border-white/30 p-6 rounded-xl shadow hover:scale-105 transition">
 
               <div className="flex justify-center mb-3">
                 {[...Array(t.rating)].map((_, i) => (
@@ -169,7 +158,7 @@ const HomePage = () => {
         </h3>
 
         <Link to="/apply"
-          className="px-8 py-3 bg-[#e6b98c] rounded-lg hover:scale-105 transition">
+          className="px-8 py-3 bg-[#e6b98c] rounded-xl shadow-lg hover:scale-110 transition">
           Start Your Journey
         </Link>
       </section>
