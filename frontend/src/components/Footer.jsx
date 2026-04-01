@@ -1,114 +1,136 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, Mail, MapPin, Phone, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { MapPin, Mail, Phone, User, Linkedin, Instagram, Youtube } from 'lucide-react';
 import ALogo from "../assets/ALogo.png";
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
-    return (
-        <footer className="bg-gray-900 text-white mt-auto">
-            <div className="section-padding py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Company Info */}
-                    <div>
-                        <Link to="/" className="flex items-center space-x-1 mb-6">
-                            <img
-                                src={ALogo}
-                                alt="Aparaitech Logo"
-                                className="h-10 w-auto object-contain"
-                            />
-                            <div>
-                                <span className="text-2xl font-bold">Aparaitech</span>
-                                <span className="block text-sm text-gray-400">Innovating Tomorrow</span>
-                            </div>
-                        </Link>
-                        <p className="text-gray-400 mb-6">
-                            Building enterprise software solutions with cutting-edge technology and exceptional talent.
-                        </p>
-                    </div>
+  return (
+    <footer className="bg-gradient-to-b from-gray-900 to-black text-white mt-auto">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-                        <ul className="space-y-3">
-                            <li>
-                                <Link to="/" className="text-gray-400 hover:text-white transition-colors duration-200">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/positions" className="text-gray-400 hover:text-white transition-colors duration-200">
-                                    Open Positions
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/apply" className="text-gray-400 hover:text-white transition-colors duration-200">
-                                    Apply Now
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+          {/* Company Info */}
+          <div>
+            <Link to="/" className="flex items-center space-x-2 mb-5">
+              <img src={ALogo} alt="Logo" className="h-10" />
+              <div>
+                <h2 className="text-xl font-bold">S Tech</h2>
+                <p className="text-xs text-gray-400">Careers & Innovation</p>
+              </div>
+            </Link>
 
-                    {/* Contact Info */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
-                        <ul className="space-y-4">
-                            <li className="flex items-start space-x-3">
-                                <MapPin className="h-5 w-5 text-gray-400 mt-1" />
-                                <span className="text-gray-400">Mukti Complex, Near Prashaskiya Bhawan, Baramati</span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                <Mail className="h-5 w-5 text-gray-400" />
-                                <a href="mailto:careers@aparaitech.com" className="text-gray-400 hover:text-white transition-colors duration-200">
-                                    info@aparaitech.org
-                                </a>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                <Phone className="h-5 w-5 text-gray-400" />
-                                <span className="text-gray-400">+91 63643 26342</span>
-                            </li>
-                        </ul>
-                    </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We build powerful enterprise solutions using modern technology 
+              and skilled developers to shape the future of digital innovation.
+            </p>
+          </div>
 
-                    {/* Social Links */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-6">Follow Us</h3>
-                        <div className="flex space-x-4">
-                            <a
-                                href="https://www.linkedin.com/company/aparaitech/posts/?feedView=all"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 p-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                            >
-                                <Linkedin className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
-                            </a>
-                            <a
-                                href="https://www.instagram.com/aparaitech_global/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group bg-gradient-to-br from-pink-600 via-purple-600 to-orange-500 hover:from-pink-500 hover:via-purple-500 hover:to-orange-400 p-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                            >
-                                <Instagram className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
-                            </a>
-                            <a
-                                href="https://www.youtube.com/@aparaitech"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group bg-gradient-to-br from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 p-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-                            >
-                                <Youtube className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-5 border-b border-gray-700 pb-2">
+              Quick Links
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link to="/" className="hover:text-blue-400 transition">Home</Link>
+              </li>
+              <li>
+                <Link to="/positions" className="hover:text-blue-400 transition">Open Positions</Link>
+              </li>
+              <li>
+                <Link to="/apply" className="hover:text-blue-400 transition">Apply Now</Link>
+              </li>
+            </ul>
+          </div>
 
-                <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                    <p>&copy; {currentYear} Aparaitech Technologies. All rights reserved.</p>
-                </div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-5 border-b border-gray-700 pb-2">
+              Contact
+            </h3>
+            <ul className="space-y-4 text-sm">
+
+              {/* 👤 Name */}
+              <li className="flex items-center gap-3">
+                <User size={18} className="text-blue-400" />
+                <span className="text-gray-400">Suhani Yadav</span>
+              </li>
+
+              {/* 📍 Address */}
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-blue-400 mt-1" />
+                <span className="text-gray-400">
+                  Mukti Complex, Near Prashaskiya Bhawan, Baramati
+                </span>
+              </li>
+
+              {/* 📧 Email */}
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-blue-400" />
+                <a href="mailto:suhaniyadav1805@gmail.com" className="hover:text-blue-400">
+                  suhaniyadav1805@gmail.com
+                </a>
+              </li>
+
+              {/* 📞 Phone */}
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-blue-400" />
+                <span className="text-gray-400">+91 9834610889</span>
+              </li>
+
+            </ul>
+          </div>
+
+          {/* Social + Map */}
+          <div>
+            <h3 className="text-lg font-semibold mb-5 border-b border-gray-700 pb-2">
+              Find Us
+            </h3>
+
+            {/* Map */}
+            <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-gray-700">
+              <iframe
+                title="Location"
+                src="https://www.google.com/maps?q=Baramati,Maharashtra&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+              ></iframe>
             </div>
-        </footer>
-    );
+
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-4">
+              <a href="https://www.linkedin.com/company/aparaitech/posts/?feedView=all"
+                target="_blank" rel="noreferrer"
+                className="bg-blue-600 p-3 rounded-full hover:scale-110 transition">
+                <Linkedin size={18} />
+              </a>
+
+              <a href="https://www.instagram.com/aparaitech_global/"
+                target="_blank" rel="noreferrer"
+                className="bg-gradient-to-tr from-pink-500 to-yellow-500 p-3 rounded-full hover:scale-110 transition">
+                <Instagram size={18} />
+              </a>
+
+              <a href="https://www.youtube.com/@aparaitech"
+                target="_blank" rel="noreferrer"
+                className="bg-red-600 p-3 rounded-full hover:scale-110 transition">
+                <Youtube size={18} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
+          © {currentYear} S Tech. All Rights Reserved.
+        </div>
+
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
